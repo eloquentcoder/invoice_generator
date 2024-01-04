@@ -1,0 +1,25 @@
+{
+    "name": "eloquentcoder/invoice_generator",
+    "description": "A simple invoice generator package for PHP projects",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Eloquentcoder\\InvoiceGenerator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Patrick Obafemi",
+            "email": "eloquentintech@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "pestphp/pest": "^2.30"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
