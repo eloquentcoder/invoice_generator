@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace Eloquentcoder\InvoiceGenerator\Contracts;
 
 use DateTimeInterface;
