@@ -8,6 +8,11 @@
             "Eloquentcoder\\InvoiceGenerator\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Eloquentcoder\\InvoiceGenerator\\Tests\\": "tests/"
+        }
+    },
     "scripts": {
         "pint": [
             "./vendor/bin/pint"
@@ -19,6 +24,13 @@
             "./vendor/bin/pest"
         ]
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Eloquentcoder\\InvoiceGenerator\\Providers\\InvoiceGeneratorServiceProvider"
+            ]
+        }
+    },
     "authors": [
         {
             "name": "Patrick Obafemi",
@@ -28,7 +40,8 @@
     "require-dev": {
         "pestphp/pest": "^2.30",
         "phpstan/phpstan": "^1.10",
-        "laravel/pint": "^1.13"
+        "laravel/pint": "^1.13",
+        "symfony/var-dumper": "^6.2"
     },
     "config": {
         "allow-plugins": {
@@ -36,6 +49,8 @@
         }
     },
     "require": {
-        "hashids/hashids": "^5.0"
+        "hashids/hashids": "^5.0",
+        "php": "^8.2",
+        "illuminate/support": "^10.39"
     }
 }
