@@ -25,3 +25,8 @@ it('it removes whitespace from the string when generating', function (): void {
     $string = $object->getInitials();
     expect($string)->toEqual("AL");
 });
+
+it('can not enter a number', function (): void {
+    $object = new StringValue("Test 1");
+    $string = $object->getInitials();
+})->throws(InvalidArgumentException::class);

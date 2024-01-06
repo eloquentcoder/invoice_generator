@@ -13,13 +13,22 @@ final class StringValue
     ) {
     }
 
+    /**
+     * Generate an immutable string representation
+     *
+     * @return string
+     */
     public function getInitials(): string
     {
-        if (mb_strlen($this->value) <= 1) {
+        $trimmed_value = trim($this->value);
+
+        if (mb_strlen($trimmed_value) <= 1) {
             throw new InvalidArgumentException("Cannot pass a string of length 1");
         }
 
-        $trimmed_value = trim($this->value);
+        if ($this->checkIfInitialCharacterIsNumber($trimmed_value)) {
+            throw new InvalidArgumentException("Cannot pass a number as an initial character");
+        }
 
         $words = explode(' ', $trimmed_value);
         if (count($words) > 1) {
@@ -29,6 +38,18 @@ final class StringValue
         return $this->getEncodedSubstring($trimmed_value, 2);
     }
 
+    private function checkIfInitialCharacterIsNumber(string $value)
+    {
+        $words = explode(' ', $value);
+        foreach ($words as  $word) {
+            $initial_value = mb_substr($word, 0, 1, 'utf-8');
+            if (preg_match("/[0-9]/", $initial_value)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     private function getEncodedSubstring(string $value, int $length): string
     {
