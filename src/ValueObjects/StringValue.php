@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Eloquentcoder\InvoiceGenerator\ValueObjects;
 
+use InvalidArgumentException;
+
 final class StringValue
 {
     public function __construct(
@@ -13,12 +15,18 @@ final class StringValue
 
     public function getInitials(): string
     {
-        $words = explode(' ', $this->value);
+        if (mb_strlen($this->value) <= 1) {
+            throw new InvalidArgumentException("Cannot pass a string of length 1");
+        }
+
+        $trimmed_value = trim($this->value);
+
+        $words = explode(' ', $trimmed_value);
         if (count($words) > 1) {
             return $this->getEncodedSubstring($words[0], 1) . $this->getEncodedSubstring($words[1], 1);
         }
 
-        return $this->getEncodedSubstring($this->value, 2);
+        return $this->getEncodedSubstring($trimmed_value, 2);
     }
 
 

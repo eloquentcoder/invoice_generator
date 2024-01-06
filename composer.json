@@ -8,6 +8,11 @@
             "Eloquentcoder\\InvoiceGenerator\\": "src/"
         }
     },
+    "scripts": {
+        "test": [
+            "./vendor/bin/pest"
+        ]
+    },
     "authors": [
         {
             "name": "Patrick Obafemi",
